@@ -48,12 +48,15 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
-
+      - name: Set values
+        run: |
+          echo "access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ env.access_key }}
+          AWS_SECRET_ACCESS_KEY: ${{ env.secret_key }}
           ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets.ACTIONS_ALLOW_UNSECURE_COMMANDS }}
           AWS-REGION: eu-central-1
 
