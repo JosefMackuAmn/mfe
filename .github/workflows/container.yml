@@ -57,7 +57,7 @@ jobs:
         with:
           AWS_ACCESS_KEY_ID: ${{ env.access_key }}
           AWS_SECRET_ACCESS_KEY: ${{ env.secret_key }}
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets.ACTIONS_ALLOW_UNSECURE_COMMANDS }}
+          # ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets.ACTIONS_ALLOW_UNSECURE_COMMANDS }}
           AWS-REGION: eu-central-1
 
       - name: Copy files to the s3 website content bucket
