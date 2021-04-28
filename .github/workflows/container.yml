@@ -48,6 +48,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
       - name: Set values
         run: |
           echo "access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
