@@ -57,9 +57,14 @@ jobs:
         with:
           aws-access-key-id: ${{ env.access_key }}
           aws-secret-access-key: ${{ env.secret_key }}
-          # ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets.ACTIONS_ALLOW_UNSECURE_COMMANDS }}
           aws-region: eu-central-1
 
       - name: Copy files to the s3 website content bucket
         run:
           aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+          
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
+        with:
+          aws-access-key-id: ${{ env.access_key }}
+          aws-secret-access-key: ${{ env.secret_key }}
+          aws-region: eu-central-1
