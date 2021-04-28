@@ -52,9 +52,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets. AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets. AWS_SECRET_ACCESS_KEY }}
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets. ACTIONS_ALLOW_UNSECURE_COMMANDS }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: ${{ secrets.ACTIONS_ALLOW_UNSECURE_COMMANDS }}
           aws-region: eu-central-1
 
       - name: Copy files to the s3 website content bucket
